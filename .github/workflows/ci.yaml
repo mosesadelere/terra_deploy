@@ -21,7 +21,7 @@ jobs:
           docker build -t mosesade/complete-devops-project:${{ env.SHORT_SHA }} .
       - name: Login to Dockerhub
         run:  |
-          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --passwd-stdin
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
       - name: Push to Dockerhub
         run:  |
           docker push mosesade/complete-devops-project:${{ env.SHORT_SHA }}
