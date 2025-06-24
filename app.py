@@ -1,12 +1,13 @@
 from flask import Flask
 import time
 
-app = Flask(__name__)
-
-@app.route("/")
-def get_current_time():
-    current_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    return f"The current time: (current_time)"
+def create_app():
+    app = Flask(__name__)
+    
+    @app.route("/")
+    def get_current_time():
+        current_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        return f"The current time: (current_time)"
 
 
 if __name__ == "__main__":
