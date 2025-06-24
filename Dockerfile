@@ -2,9 +2,9 @@ FROM python:3.9-slim AS build
 
 ENV CONTAINER_HOME=/app
 
-COPY app.py requirements.txt ${CONTAINER_HOME}
-
 WORKDIR ${CONTAINER_HOME}
+
+COPY app.py requirements.txt ${CONTAINER_HOME}
 
 RUN pip install -r ${CONTAINER_HOME}/requirements.txt
 
