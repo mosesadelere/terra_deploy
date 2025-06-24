@@ -8,17 +8,15 @@ COPY app.py requirements.txt ${CONTAINER_HOME}
 
 RUN pip install -r ${CONTAINER_HOME}/requirements.txt
 
-##EXPOSE  8080
+EXPOSE  8080
 
-#CMD ["python", "app.py"]
+CMD ["python", "app.py"]
 
 
-FROM nginx:alpine
+#FROM nginx:alpine
 
-COPY --from=build /app /usr/share/nginx/html
+#COPY --from=build /app /usr/share/nginx/html
 
-EXPOSE 8080
+#EXPOSE 8080
 
 #CMD [ "nginx", "-g", "daemon off;" ]
-CMD ["python", "app.py"]
-CMD [ "nginx", "-g", "daemon off;" ]
