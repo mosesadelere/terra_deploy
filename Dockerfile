@@ -2,7 +2,7 @@ FROM python:3.9-slim AS build
 
 ENV CONTAINER_HOME=/var/www
 
-ADD . ${CONTAINER_HOME}
+COPY app.py requirements.txt ${CONTAINER_HOME}
 
 WORKDIR ${CONTAINER_HOME}
 
