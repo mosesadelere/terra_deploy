@@ -1,6 +1,6 @@
 FROM python:3.9-slim AS build
 
-ENV CONTAINER_HOME=/var/www
+ENV CONTAINER_HOME=/app
 
 COPY app.py requirements.txt ${CONTAINER_HOME}
 
@@ -15,7 +15,7 @@ CMD ["python", "app.py"]
 
 FROM nginx:alpine
 
-COPY --from=build /var/www /usr/share/nginx/html
+COPY --from=build /app /usr/share/nginx/html
 
 EXPOSE 8080
 
