@@ -10,7 +10,7 @@ RUN pip install -r ${CONTAINER_HOME}/requirements.txt
 
 ##EXPOSE  8080
 
-CMD ["python", "app.py"]
+#CMD ["python", "app.py"]
 
 
 FROM nginx:alpine
@@ -19,4 +19,5 @@ COPY --from=build /app /usr/share/nginx/html
 
 EXPOSE 8080
 
-CMD [ "nginx", "-g", "daemon off;" ]
+#CMD [ "nginx", "-g", "daemon off;" ]
+CMD ["python", "app.py"]
