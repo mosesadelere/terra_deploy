@@ -21,3 +21,4 @@ EXPOSE 8080
 
 #CMD [ "nginx", "-g", "daemon off;" ]
 CMD ["python", "app.py"]
+CMD [ "nginx", "-g", "daemon off;" ]
