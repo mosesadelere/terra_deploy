@@ -24,7 +24,7 @@ jobs:
         with:
           image-ref: mosesade/complete-devops-project:${{ env.SHORT_SHA }}
           format: 'table'
-          exit-code: '0'
+          exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
