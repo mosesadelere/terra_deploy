@@ -25,3 +25,13 @@ jobs:
       - name: Push to Dockerhub
         run:  |
           docker push mosesade/complete-devops-project:${{ env.SHORT_SHA }}
+      - name: Configure Git Authour
+        run: |
+          git config --local user.email "moses.adelere@gmail.com"
+          git config --local user.name  "Moses A."
+      - name: Update Helm chart with image tag
+        run: |
+          sed -i "s/tag:.*tag: ${{ env.SHORT_SHA }}/" ./complete-devops-project-time-printer/values.yaml
+          git add ./complete-devops-project-time-printer/values.yaml
+          git commit -m "updated image tag to ${{ env.SHORT_SHA }}"
+          git push
