@@ -19,6 +19,15 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t mosesade/complete-devops-project:${{ env.SHORT_SHA }} .
+      - name: Run security scan using Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: mosesade/complete-devops-project:${{ env.SHORT_SHA }}
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
       - name: Login to Dockerhub
         run:  |
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
