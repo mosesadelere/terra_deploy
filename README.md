@@ -94,7 +94,7 @@ Trigger the pipeline to observe GitOps
 
 Lets see the magic of the GitOps in real time.
 
-    Open ``àpp.py``` and change the time format string to any acceptable of your choice.
+    Open ```app.py``` and change the time format string to any acceptable of your choice.
 
     Commit and push the changes to your master branch:
 
