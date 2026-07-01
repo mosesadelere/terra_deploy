@@ -4,6 +4,9 @@ name: Complete DevOps Project Pipeline
 
 on:
   push:
+    paths:
+      - 'app.py'
+      - '.github/workflows/ci.yaml'
     branches:
       - master
 
