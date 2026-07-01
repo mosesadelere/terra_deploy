@@ -12,13 +12,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
+
+      - name: Checks credentials leaks
+        uses: gitleaks/gitleaks-action@v1.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set Short SHA
         run: |
           echo "SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-7)" >> $GITHUB_ENV
+
       - name: Build Docker image
         run: |
           docker build -t mosesade/complete-devops-project:${{ env.SHORT_SHA }} .
+
       - name: Run security scan using Trivy
         uses: aquasecurity/trivy-action@master
         with:
@@ -28,16 +36,20 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+
       - name: Login to Dockerhub
         run:  |
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ vars.DOCKERHUB_USERNAME }}" --password-stdin
+
       - name: Push to Dockerhub
         run:  |
           docker push mosesade/complete-devops-project:${{ env.SHORT_SHA }}
+
       - name: Configure Git Authour
         run: |
           git config --local user.email "moses.adelere@gmail.com"
           git config --local user.name  "Moses A."
+          
       - name: Update Helm chart with image tag
         run: |
           sed -i "s/tag:.*/tag: ${{ env.SHORT_SHA }}/" ./complete-devops-project-time-printer/values.yaml
