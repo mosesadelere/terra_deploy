@@ -17,7 +17,7 @@ jobs:
       - name: Checks credentials leaks
         uses: gitleaks/gitleaks-action@v1.2.0
         env:
-          GITHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set Short SHA
         run: |
