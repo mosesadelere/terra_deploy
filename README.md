@@ -117,3 +117,5 @@ Lets see the magic of the GitOps in real time.
 1. kubectl port-forward svc/complete-devops-project-time-printer 8081:2222
 
 Visit http://localhost:8081 in your browser to see your updated time format.
+
+------------------------------------------ Finish --------------------------------------------------
