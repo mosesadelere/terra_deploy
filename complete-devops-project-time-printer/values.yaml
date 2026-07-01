@@ -1,6 +1,6 @@
 image:
   repository: mosesade/complete-devops-project
-  tag: 5dd1cce
+  tag: faaf688
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
