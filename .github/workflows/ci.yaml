@@ -69,7 +69,7 @@ jobs:
       #     docker tag mosesade/complete-devops-project:${{ env.SHORT_SHA }} $ECR_REPOSITORY:${{ env.SHORT_SHA }}
       #     docker push $ECR_REPOSITORY:${{ env.SHORT_SHA }}
 
-      - name: Configure Git Authour
+      - name: Configure Git Authours
         run: |
           git config --local user.email "moses.adelere@gmail.com"
           git config --local user.name  "Moses A."

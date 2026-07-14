@@ -3,3 +3,4 @@
 *.tfstate*
 *.tfvars
 *.tfstate.backup
+env/aws/.terraform/
