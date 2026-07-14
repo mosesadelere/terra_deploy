@@ -14,7 +14,7 @@ variable "private_subnet_cidr" {
 }
 
 variable "availability_zone" {
-  type = string
+  type = list(string)
   description = "availability zone"
 }
 
@@ -27,4 +27,10 @@ variable "region" {
 variable "environment" {
   type = string
   description = "environment"
+}
+
+variable "vpc_id" {
+  type = string
+  description = "vpc id"
+  default = "test"
 }

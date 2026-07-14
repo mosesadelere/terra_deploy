@@ -48,6 +48,27 @@ jobs:
         run:  |
           docker push mosesade/complete-devops-project:${{ env.SHORT_SHA }}
 
+      # Optional: AWS ECR login and push (commented out)
+      # - name: Configure AWS Credentials
+      #  uses: aws-actions/configure-aws-credentials@v2
+      #  with:
+      #    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #    aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: us-west-2
+      #
+      # - name: Login to AWS ECR
+      #   id: ecr-login
+      #   uses: aws-actions/amazon-ecr-login@v2
+      #   run: |
+      #     aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <your_aws_account_id>.dkr.ecr.us-east-1.amazonaws.com
+      # - name: Push to AWS ECR
+      #   env:
+      #     ECR_REGISTRY: <your_aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/complete-devops-project
+      #     ECR_REPOSITORY: <your_aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/complete-devops-project
+      #   run: |
+      #     docker tag mosesade/complete-devops-project:${{ env.SHORT_SHA }} $ECR_REPOSITORY:${{ env.SHORT_SHA }}
+      #     docker push $ECR_REPOSITORY:${{ env.SHORT_SHA }}
+
       - name: Configure Git Authour
         run: |
           git config --local user.email "moses.adelere@gmail.com"

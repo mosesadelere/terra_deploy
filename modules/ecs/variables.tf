@@ -1,6 +1,7 @@
 variable "cluster_name" {
   description = "ecs cluster name"
   type = string
+  default = "complete-devops-project-cluster"
 }
 
 variable "vpc_id" {
